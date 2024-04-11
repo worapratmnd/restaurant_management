@@ -1,0 +1,23 @@
+<form>
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name">
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select>
+          <mat-option [value]="'A'">
+            Available
+          </mat-option>
+          <mat-option [value]="'R'">
+            Reserved
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
