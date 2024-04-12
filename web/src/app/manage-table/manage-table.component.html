@@ -1,11 +1,11 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-8">
         <div class="card">
           <div class="card-header card-header-danger">
             <h4 class="card-title">Table</h4>
-            <p class="card-category">table management</p>
+            <p class="card-category">search table</p>
           </div>
           <div class="card-body">
             <div class="col-md-12">
@@ -14,13 +14,20 @@
             <div class="col-12 mt-2">
               <button mat-raised-button type="submit" class="btn btn-danger">ค้นหา</button>
             </div>
-            <hr />
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
             <div class="col-12">
-              <button mat-raised-button type="submit" class="btn btn-warning">เพิ่ม Table</button>
+              <button mat-raised-button type="submit" class="btn btn-warning" (click)="onClickAddTable()">เพิ่ม
+                Table</button>
               <app-manage-table-list></app-manage-table-list>
             </div>
           </div>
         </div>
+      </div>
+      <div class="col-md-4">
+        <app-table-form></app-table-form>
       </div>
     </div>
   </div>

@@ -22,10 +22,13 @@ import { CreateOrderComponent } from 'app/order/pages/create-order/create-order.
 import { OrderListComponent } from 'app/order/components/order-list/order-list.component';
 import { ManageTableComponent } from 'app/manage-table/manage-table.component';
 import { TableListComponent } from 'app/table-list/table-list.component';
-import { ManageTableListComponent } from 'app/manage-table/components/manage-table-list/ManageTableListComponent';
 import { SearchTableFormComponent } from 'app/manage-table/components/search-table-form/search-table-form.component';
 import { PopupTableComponent } from 'app/manage-table/components/popup-table/popup-table.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ManageTableListComponent } from 'app/manage-table/components/manage-table-list/manage-table-list.component';
+import { RecipeComponent } from 'app/recipe/recipe.component';
+import { TableFormComponent } from 'app/manage-table/components/table-form/table-form.component';
+import { RecipeFormComponent } from 'app/recipe/components/recipe-form/recipe-form.component';
 
 @NgModule({
   imports: [
@@ -58,6 +61,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ManageTableListComponent,
     SearchTableFormComponent,
     PopupTableComponent,
+    RecipeComponent,
+    TableFormComponent,
+    RecipeFormComponent,
   ]
 })
 

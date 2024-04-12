@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupTableComponent } from './components/popup-table/popup-table.component';
 
 @Component({
   selector: 'app-manage-table',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
+  }
+
+  onClickAddTable() {
+    this.dialog.open(PopupTableComponent);
   }
 
 }

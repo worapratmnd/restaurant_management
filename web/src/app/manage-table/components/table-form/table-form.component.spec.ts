@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ManageTableListComponent } from './manage-table-list.component';
+import { TableFormComponent } from './table-form.component';
 
-describe('ManageTableListComponent', () => {
-  let component: ManageTableListComponent;
-  let fixture: ComponentFixture<ManageTableListComponent>;
+describe('TableFormComponent', () => {
+  let component: TableFormComponent;
+  let fixture: ComponentFixture<TableFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ManageTableListComponent]
+      declarations: [ TableFormComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManageTableListComponent);
+    fixture = TestBed.createComponent(TableFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
