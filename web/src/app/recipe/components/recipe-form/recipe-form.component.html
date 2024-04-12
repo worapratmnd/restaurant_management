@@ -4,7 +4,36 @@
     <p class="card-category">เพิ่มเมนูอาหาร</p>
   </div>
   <div class="card-body">
-    <div class="col-md-12">
-    </div>
+    <form class="row">
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input matInput placeholder="Name">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input matInput type="number" placeholder="Amount">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select>
+            <mat-option [value]="'A'">
+              Available
+            </mat-option>
+            <mat-option [value]="'R'">
+              Reserved
+            </mat-option>
+            <mat-option [value]="'O'">
+              Out of stock
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <button mat-raised-button type="submit" class="btn btn-danger">บันทึก</button>
+      </div>
+    </form>
   </div>
 </div>

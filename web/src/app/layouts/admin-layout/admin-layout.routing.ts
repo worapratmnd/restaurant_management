@@ -57,7 +57,8 @@ export const AdminLayoutRoutes: Routes = [
     //     }]
     // }
     {
-        path: 'order', children: [
+        path: 'order',
+        children: [
             {
                 path: '',
                 component: OrderComponent,

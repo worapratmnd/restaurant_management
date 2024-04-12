@@ -29,6 +29,9 @@ import { ManageTableListComponent } from 'app/manage-table/components/manage-tab
 import { RecipeComponent } from 'app/recipe/recipe.component';
 import { TableFormComponent } from 'app/manage-table/components/table-form/table-form.component';
 import { RecipeFormComponent } from 'app/recipe/components/recipe-form/recipe-form.component';
+import { RecipeSearchFormComponent } from 'app/recipe/components/recipe-search-form/recipe-search-form.component';
+import { RecipeListComponent } from 'app/recipe/components/recipe-list/recipe-list.component';
+import { OrderFormComponent } from 'app/order/components/order-form/order-form.component';
 
 @NgModule({
   imports: [
@@ -64,6 +67,9 @@ import { RecipeFormComponent } from 'app/recipe/components/recipe-form/recipe-fo
     RecipeComponent,
     TableFormComponent,
     RecipeFormComponent,
+    RecipeSearchFormComponent,
+    RecipeListComponent,
+    OrderFormComponent,
   ]
 })
 
