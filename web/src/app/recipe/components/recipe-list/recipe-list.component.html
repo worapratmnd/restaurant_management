@@ -16,33 +16,27 @@
                 <th>
                   Name
                 </th>
-                <th>
+                <th class="text-right">
                   Amount
                 </th>
-                <th>
+                <th class="text-center">
                   Status
                 </th>
                 <th></th>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    1
-                  </td>
-                  <td>
-                    ข้าวแกงกะหรี่ไก่
-                  </td>
-                  <td>
-                    70
-                  </td>
-                  <td>
-                    Available
-                  </td>
-                  <td>
-                    <i class="material-icons cursor-pointer">edit</i>
+                <tr *ngFor="let item of listData">
+                  <td>{{item.id}}</td>
+                  <td>{{item.name}}</td>
+                  <td class="text-right">{{item.amount | number: "0.2" }}</td>
+                  <td class="text-center">{{getRecipeStatus(item.status)}}</td>
+                  <td class="text-center">
+                    <button mat-raised-button type="button" matTooltip="Edit Recipe" [matTooltipPosition]="'above'"
+                      class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="onClickItem(item)">
+                      <i class="material-icons">edit</i>
+                    </button>
                   </td>
                 </tr>
-
               </tbody>
             </table>
           </div>

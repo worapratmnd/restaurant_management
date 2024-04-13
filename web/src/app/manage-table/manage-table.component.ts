@@ -17,9 +17,11 @@ export class ManageTableComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private manageTableService: ManageTableService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isEdit = false;
+  }
 
   onClickAddTable() {
     this.isEdit = false;
@@ -41,7 +43,7 @@ export class ManageTableComponent implements OnInit {
   onSubmitForm(table: IManageTable) {
     console.log(`Submit`);
     console.log(table);
-    if (this.isEdit) {
+    if (this.isEdit && table.id != null) {
       this.manageTableService.editTable(table);
     } else {
       this.manageTableService.addTable(table);

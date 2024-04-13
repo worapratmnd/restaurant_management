@@ -51,7 +51,7 @@ export class TableFormComponent implements OnInit {
 
   onClickSubmit() {
     if (this.formGroup.valid) {
-      this.onSubmit.emit({ ...this.formGroup.getRawValue(), id: this.data.id });
+      this.onSubmit.emit({ ...this.formGroup.getRawValue(), id: this.data?.id });
     }
   }
 }
