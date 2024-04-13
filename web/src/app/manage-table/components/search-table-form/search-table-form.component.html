@@ -3,18 +3,15 @@
     <div class="col-6">
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name">
+        <input matInput placeholder="Name" />
       </mat-form-field>
     </div>
     <div class="col-6">
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label>Status</mat-label>
         <mat-select>
-          <mat-option [value]="'A'">
-            Available
-          </mat-option>
-          <mat-option [value]="'R'">
-            Reserved
+          <mat-option [value]="item.key" *ngFor="let item of getTableStatus()">
+            {{ item.value }}
           </mat-option>
         </mat-select>
       </mat-form-field>
