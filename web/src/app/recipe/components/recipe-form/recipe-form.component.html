@@ -24,7 +24,11 @@
         </mat-form-field>
       </div>
       <div class="col-12">
-        <button mat-raised-button type="submit" class="btn btn-danger">บันทึก</button>
+        <button *ngIf="data?.id != null" mat-raised-button type="button" matTooltip="Remove Recipe"
+          [matTooltipPosition]="'above'" class="btn btn-accent btn-link btn-sm btn-just-icon" (click)="onClickRemove()">
+          <i class="material-icons">delete</i>
+        </button>
+        <button mat-raised-button type="submit" class="btn btn-danger pull-right">Submit</button>
       </div>
     </form>
   </div>

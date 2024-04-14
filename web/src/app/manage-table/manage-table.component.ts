@@ -49,4 +49,8 @@ export class ManageTableComponent implements OnInit {
       this.manageTableService.addTable(table);
     }
   }
+
+  onRemove(table: IManageTable) {
+    this.manageTableService.removeTable(table);
+  }
 }

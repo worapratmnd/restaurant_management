@@ -15,20 +15,16 @@
         <mat-form-field appearance="outline">
           <mat-label>Status</mat-label>
           <mat-select formControlName="status">
-            <mat-option
-              *ngFor="let item of getTableStatus()"
-              [value]="item.key"
-              >{{ item.value }}</mat-option
-            >
+            <mat-option *ngFor="let item of getTableStatus()" [value]="item.key">{{ item.value }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col-12">
-        <button
-          mat-raised-button
-          type="submit"
-          class="btn btn-danger pull-right"
-        >
+        <button *ngIf="data?.id != null" mat-raised-button type="button" matTooltip="Remove Table"
+          [matTooltipPosition]="'above'" class="btn btn-accent btn-link btn-sm btn-just-icon" (click)="onClickRemove()">
+          <i class="material-icons">delete</i>
+        </button>
+        <button mat-raised-button type="submit" class="btn btn-danger pull-right">
           Submit
         </button>
       </div>

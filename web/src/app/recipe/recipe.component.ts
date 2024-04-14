@@ -37,6 +37,10 @@ export class RecipeComponent implements OnInit {
     }
   }
 
+  onRemove(item: IRecipe) {
+    this.recipeService.removeRecipe(item);
+  }
+
   onClickAdd() {
     this.isEdit = false;
     this.selectedItem = {

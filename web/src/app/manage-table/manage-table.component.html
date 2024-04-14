@@ -21,27 +21,18 @@
         <div class="card">
           <div class="card-body">
             <div class="col-12">
-              <button
-                mat-raised-button
-                type="submit"
-                class="btn btn-warning"
-                (click)="onClickAddTable()"
-              >
+              <button mat-raised-button type="submit" class="btn btn-warning" (click)="onClickAddTable()">
                 เพิ่ม Table
               </button>
-              <app-manage-table-list
-                [data]="onGetTable()"
-                (onSelectedItem)="onSelectedItem($event)"
-              ></app-manage-table-list>
+              <app-manage-table-list [data]="onGetTable()"
+                (onSelectedItem)="onSelectedItem($event)"></app-manage-table-list>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <app-table-form
-          [data]="selectedItem"
-          (onSubmit)="onSubmitForm($event)"
-        ></app-table-form>
+        <app-table-form [data]="selectedItem" (onSubmit)="onSubmitForm($event)"
+          (onRemove)="onRemove($event)"></app-table-form>
       </div>
     </div>
   </div>

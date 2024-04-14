@@ -20,10 +20,11 @@ export class TableFormComponent implements OnInit {
   data?: IManageTable;
 
   @Output() onSubmit = new EventEmitter<IManageTable>();
+  @Output() onRemove = new EventEmitter<IManageTable>();
 
   formGroup: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createForm();
@@ -53,5 +54,10 @@ export class TableFormComponent implements OnInit {
     if (this.formGroup.valid) {
       this.onSubmit.emit({ ...this.formGroup.getRawValue(), id: this.data?.id });
     }
+  }
+
+  onClickRemove() {
+    this.onRemove.emit(this.data);
+
   }
 }

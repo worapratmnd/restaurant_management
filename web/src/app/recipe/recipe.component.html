@@ -16,7 +16,8 @@
         </div>
       </div>
       <div class="col-md-4">
-        <app-recipe-form [data]="selectedItem" (onSubmit)="onSubmit($event)"></app-recipe-form>
+        <app-recipe-form [data]="selectedItem" (onSubmit)="onSubmit($event)"
+          (onRemove)="onRemove($event)"></app-recipe-form>
       </div>
 
       <div class="col-md-12">

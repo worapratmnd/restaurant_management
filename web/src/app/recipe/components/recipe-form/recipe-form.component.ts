@@ -12,6 +12,7 @@ export class RecipeFormComponent implements OnInit {
   @Input()
   data?: IRecipe;
   @Output() onSubmit = new EventEmitter<IRecipe>();
+  @Output() onRemove = new EventEmitter<IRecipe>();
 
   formGroup: FormGroup;
 
@@ -48,6 +49,10 @@ export class RecipeFormComponent implements OnInit {
     if (this.formGroup.valid) {
       this.onSubmit.emit({ ...this.formGroup.getRawValue(), id: this.data?.id });
     }
+  }
+
+  onClickRemove() {
+    this.onRemove.emit(this.data);
   }
 
 }
