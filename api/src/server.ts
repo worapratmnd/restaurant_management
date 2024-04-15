@@ -3,11 +3,7 @@ import helmet from 'helmet';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import compressFilter from './utils/compressFilter.util';
-import {
-    projectRouter,
-    purchaseOrderRouter,
-    tableRouter,
-} from './routes/v1';
+import apiV1 from './routes/v1';
 import { errorHandler } from './middleware/errorHandler';
 import config from './config/config';
 // import authLimiter from './middleware/authLimiter';
@@ -53,10 +49,7 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Welcome to Express & TypeScript Server');
 });
 
-app.use('/api/v1/project', projectRouter);
-app.use('/api/v1/purchaseOrder', purchaseOrderRouter);
-app.use('/api/v1/table', tableRouter);
-
+app.use('/api/v1', apiV1);
 // app.use(errorHandler);
 
 

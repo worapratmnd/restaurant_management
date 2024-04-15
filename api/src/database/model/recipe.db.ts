@@ -1,17 +1,15 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 
 
-export class Table extends Model {
+export class Recipe extends Model {
     declare id: number;
     declare name: string;
+    declare amount: number;
     declare status: string;
-
-    declare readonly createdAt: Date;
-    declare readonly updatedAt: Date;
 }
 
-export function initTable(sequelize: Sequelize): void {
-    Table.init(
+export function initRecipe(sequelize: Sequelize): void {
+    Recipe.init(
         {
             id: {
                 field: "id",
@@ -22,6 +20,12 @@ export function initTable(sequelize: Sequelize): void {
             name: {
                 field: "name",
                 type: DataTypes.STRING(255),
+                allowNull: false,
+            },
+            amount: {
+                field: "amount",
+                type: DataTypes.DECIMAL,
+                defaultValue: 0,
                 allowNull: false,
             },
             status: {
@@ -36,7 +40,7 @@ export function initTable(sequelize: Sequelize): void {
             sequelize,
             timestamps: true,
             underscored: true,
-            tableName: "table_management",
+            tableName: "recipe",
         }
     );
 }

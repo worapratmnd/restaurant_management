@@ -4,6 +4,7 @@ import { initPurchaseOrder } from './model/purchaseOrder.db';
 import { initPurchaseOrderItem } from './model/purchaseOrderItem.db';
 import { initProject } from './model/project.db';
 import { initTable } from './model/table.db';
+import { initRecipe } from './model/recipe.db';
 
 const sequelize = new Sequelize(
   config.database.DB,
@@ -28,6 +29,7 @@ const sequelize = new Sequelize(
 
 function initDatabase() {
   initTable(sequelize);
+  initRecipe(sequelize);
   // initProject(sequelize);
   // initPurchaseOrder(sequelize);
   // initPurchaseOrderItem(sequelize);
