@@ -1,20 +1,26 @@
-<form>
+<form [formGroup]="formGroup" (ngSubmit)="onClickSearch()">
   <div class="row">
     <div class="col-6">
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" />
+        <input matInput placeholder="Name" formControlName="name" />
       </mat-form-field>
     </div>
     <div class="col-6">
       <mat-form-field appearance="outline" class="example-full-width">
         <mat-label>Status</mat-label>
-        <mat-select>
+        <mat-select formControlName="status">
+          <mat-option>None</mat-option>
           <mat-option [value]="item.key" *ngFor="let item of getTableStatus()">
             {{ item.value }}
           </mat-option>
         </mat-select>
       </mat-form-field>
+    </div>
+    <div class="col-12 mt-2">
+      <button mat-raised-button type="submit" class="btn btn-danger">
+        Search
+      </button>
     </div>
   </div>
 </form>

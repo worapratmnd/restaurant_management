@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { tableStatus } from "app/shared/constants/manage.table.status";
+import { IManageTable } from 'app/shared/interface/manage-table.interface';
 
 @Component({
   selector: "app-search-table-form",
@@ -7,11 +9,31 @@ import { tableStatus } from "app/shared/constants/manage.table.status";
   styleUrls: ["./search-table-form.component.scss"],
 })
 export class SearchTableFormComponent implements OnInit {
-  constructor() {}
+  @Output()
+  onSearch = new EventEmitter<IManageTable>();
 
-  ngOnInit() {}
+  formGroup: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.formGroup = this.formBuilder.group({
+      name: [''],
+      status: [null],
+    });
+  }
+
 
   getTableStatus() {
     return tableStatus;
   }
+
+  onClickSearch() {
+    this.onSearch.emit(this.formGroup.getRawValue());
+  }
+
 }

@@ -5,16 +5,11 @@
         <div class="card">
           <div class="card-header card-header-danger">
             <h4 class="card-title">Table</h4>
-            <p class="card-category">search table</p>
+            <p class="card-category">Search table</p>
           </div>
           <div class="card-body">
             <div class="col-md-12">
-              <app-search-table-form></app-search-table-form>
-            </div>
-            <div class="col-12 mt-2">
-              <button mat-raised-button type="submit" class="btn btn-danger">
-                ค้นหา
-              </button>
+              <app-search-table-form (onSearch)="onGetTable($event)"></app-search-table-form>
             </div>
           </div>
         </div>
@@ -22,9 +17,9 @@
           <div class="card-body">
             <div class="col-12">
               <button mat-raised-button type="submit" class="btn btn-warning" (click)="onClickAddTable()">
-                เพิ่ม Table
+                Add new Table
               </button>
-              <app-manage-table-list [data]="onGetTable()"
+              <app-manage-table-list [data]="tableList"
                 (onSelectedItem)="onSelectedItem($event)"></app-manage-table-list>
             </div>
           </div>

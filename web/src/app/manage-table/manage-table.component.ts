@@ -12,6 +12,7 @@ import { IManageTable } from "app/shared/interface/manage-table.interface";
 export class ManageTableComponent implements OnInit {
   isEdit: boolean = false;
 
+  tableList: IManageTable[];
   selectedItem: IManageTable;
 
   constructor(
@@ -21,6 +22,7 @@ export class ManageTableComponent implements OnInit {
 
   ngOnInit() {
     this.isEdit = false;
+    this.onGetTable();
   }
 
   onClickAddTable() {
@@ -31,8 +33,12 @@ export class ManageTableComponent implements OnInit {
     };
   }
 
-  onGetTable() {
-    return this.manageTableService.getAllTable();
+  onGetTable(searchData?: IManageTable) {
+    this.manageTableService.getAllTable(searchData).subscribe((result) => {
+      if (result.code == 200) {
+        this.tableList = result.data;
+      }
+    });
   }
 
   onSelectedItem(item: IManageTable) {
@@ -41,13 +47,23 @@ export class ManageTableComponent implements OnInit {
   }
 
   onSubmitForm(table: IManageTable) {
-    console.log(`Submit`);
-    console.log(table);
     if (this.isEdit && table.id != null) {
-      this.manageTableService.editTable(table);
+      this.editTable(table);
     } else {
-      this.manageTableService.addTable(table);
+      this.addTable(table);
     }
+  }
+
+  addTable(table: IManageTable) {
+    this.manageTableService.addTable(table).subscribe(response => {
+      this.onGetTable();
+    });
+  }
+
+  editTable(table: IManageTable) {
+    this.manageTableService.editTable(table).subscribe(response => {
+      this.onGetTable();
+    });
   }
 
   onRemove(table: IManageTable) {

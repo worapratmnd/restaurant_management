@@ -1,40 +1,31 @@
 import { Injectable } from "@angular/core";
 import { IManageTable } from "../interface/manage-table.interface";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "environments/environment";
+import { QueryResponse } from "../interface/query-response.interface";
 
 @Injectable({
   providedIn: "root",
 })
 export class ManageTableService {
-  tableList: IManageTable[] = [
-    {
-      id: 1,
-      name: "โต๊ะริมหน้าต่าง",
-      status: "A",
-    },
-  ];
-  tableId: number = 1;
 
-  constructor() {}
+  constructor(private http: HttpClient) { }
 
-  getTableId() {
-    return ++this.tableId;
-  }
-  getAllTable() {
-    return this.tableList;
+
+  getAllTable(body: IManageTable) {
+    return this.http.post<QueryResponse<IManageTable[]>>(`${environment.apiUrl}/table/search`, body);
   }
 
   addTable(table: IManageTable) {
-    table.id = this.getTableId();
-    this.tableList.push(table);
+    return this.http.post(`${environment.apiUrl}/table`, table);
   }
 
   editTable(table: IManageTable) {
-    const item = this.tableList.find((item) => item.id == table.id);
-    item.name = table.name;
-    item.status = table.status;
+    return this.http.put(`${environment.apiUrl}/table/${table.id}`, table);
+
   }
 
   removeTable(table: IManageTable) {
-    this.tableList = this.tableList.filter((item) => item.id != table.id);
+    return this.http.delete(`${environment.apiUrl}/table/${table.id}`);
   }
 }
