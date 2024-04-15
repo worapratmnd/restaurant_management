@@ -1,5 +1,5 @@
 {
-  "name": "ftt_api_backend_new",
+  "name": "api_backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
