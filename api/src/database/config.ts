@@ -3,6 +3,7 @@ import config from '../config/config';
 import { initTable } from './model/table.db';
 import { initRecipe } from './model/recipe.db';
 import { initOrderItem } from './model/orderItem.db';
+import { initOrder } from './model/order.db';
 
 const sequelize = new Sequelize(
   config.database.DB,
@@ -29,7 +30,7 @@ function initDatabase() {
   initTable(sequelize);
   initRecipe(sequelize);
   initOrderItem(sequelize);
-
+  initOrder(sequelize);
 }
 
 
