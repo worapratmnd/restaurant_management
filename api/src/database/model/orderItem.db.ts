@@ -1,19 +1,22 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
+import { Recipe } from "./recipe.db";
 
 
-export class Recipe extends Model {
+export class OrderItem extends Model {
     declare id: number;
-    declare name: string;
+    declare recipeId: number;
+    declare orderId: number;
+    declare quantity: number;
     declare amount: number;
-    declare status: string;
+    declare totalAmount: string;
     declare readonly createdAt: Date;
     declare readonly createdBy: string;
     declare readonly updatedAt: Date;
     declare readonly updatedBy: string;
 }
 
-export function initRecipe(sequelize: Sequelize): void {
-    Recipe.init(
+export function initOrderItem(sequelize: Sequelize): void {
+    OrderItem.init(
         {
             id: {
                 field: "id",
@@ -21,9 +24,20 @@ export function initRecipe(sequelize: Sequelize): void {
                 primaryKey: true,
                 autoIncrement: true,
             },
-            name: {
-                field: "name",
-                type: DataTypes.STRING(255),
+            recipeId: {
+                field: "recipe_id",
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            orderId: {
+                field: "order_id",
+                type: DataTypes.INTEGER,
+                allowNull: false,
+            },
+            quantity: {
+                field: "quantity",
+                type: DataTypes.INTEGER,
+                defaultValue: 0,
                 allowNull: false,
             },
             amount: {
@@ -32,10 +46,10 @@ export function initRecipe(sequelize: Sequelize): void {
                 defaultValue: 0,
                 allowNull: false,
             },
-            status: {
-                field: "status",
-                type: DataTypes.STRING(255),
-                defaultValue: 'A',
+            totalAmount: {
+                field: "total_amount",
+                type: DataTypes.DECIMAL,
+                defaultValue: 0,
                 allowNull: false,
             },
             createdBy: {
@@ -49,7 +63,8 @@ export function initRecipe(sequelize: Sequelize): void {
             sequelize,
             timestamps: true,
             underscored: true,
-            tableName: "recipe",
+            tableName: "order_item",
         }
     );
+    OrderItem.hasOne(Recipe, { foreignKey: 'id', sourceKey: 'recipeId' });
 }

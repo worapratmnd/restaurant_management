@@ -5,9 +5,10 @@ export class Table extends Model {
     declare id: number;
     declare name: string;
     declare status: string;
-
     declare readonly createdAt: Date;
+    declare readonly createdBy: string;
     declare readonly updatedAt: Date;
+    declare readonly updatedBy: string;
 }
 
 export function initTable(sequelize: Sequelize): void {
@@ -30,7 +31,12 @@ export function initTable(sequelize: Sequelize): void {
                 defaultValue: 'A',
                 allowNull: false,
             },
-
+            createdBy: {
+                type: DataTypes.STRING,
+            },
+            updatedBy: {
+                type: DataTypes.STRING,
+            },
         },
         {
             sequelize,
