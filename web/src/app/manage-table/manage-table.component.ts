@@ -14,6 +14,7 @@ export class ManageTableComponent implements OnInit {
 
   tableList: IManageTable[];
   selectedItem: IManageTable;
+  searchTableData: IManageTable;
 
   constructor(
     private dialog: MatDialog,
@@ -34,7 +35,10 @@ export class ManageTableComponent implements OnInit {
   }
 
   onGetTable(searchData?: IManageTable) {
-    this.manageTableService.getAllTable(searchData).subscribe((result) => {
+    if (searchData != undefined) {
+      this.searchTableData = searchData;
+    }
+    this.manageTableService.getAllTable(this.searchTableData).subscribe((result) => {
       if (result.code == 200) {
         this.tableList = result.data;
       }
@@ -67,6 +71,8 @@ export class ManageTableComponent implements OnInit {
   }
 
   onRemove(table: IManageTable) {
-    this.manageTableService.removeTable(table);
+    this.manageTableService.removeTable(table).subscribe(response => {
+      this.onGetTable();
+    });
   }
 }

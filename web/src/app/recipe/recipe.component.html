@@ -9,7 +9,7 @@
           </div>
           <div class="card-body">
             <div class="col-md-12">
-              <app-recipe-search-form></app-recipe-search-form>
+              <app-recipe-search-form (onSearch)="getAllRecipe($event)"></app-recipe-search-form>
 
             </div>
           </div>
@@ -24,7 +24,7 @@
         <div class="card">
           <div class="card-body">
             <button mat-raised-button type="submit" class="btn btn-warning" (click)="onClickAdd()">เพิ่ม Recipe</button>
-            <app-recipe-list [listData]="getAllRecipe()" (onSelectedItem)="onSelectedItem($event)"></app-recipe-list>
+            <app-recipe-list [listData]="recipeList" (onSelectedItem)="onSelectedItem($event)"></app-recipe-list>
           </div>
         </div>
       </div>

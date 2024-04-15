@@ -1,31 +1,26 @@
-<form class="row">
+<form [formGroup]="formGroup" (ngSubmit)="onClickSearch()" class="row">
   <div class="col-6">
     <mat-form-field class="example-full-width" appearance="outline">
-      <input matInput placeholder="Name">
+      <input matInput placeholder="Name" formControlName="name">
     </mat-form-field>
   </div>
   <div class="col-6">
     <mat-form-field class="example-full-width" appearance="outline">
-      <input matInput placeholder="Amount">
+      <input matInput type="number" placeholder="Amount" formControlName="amount">
     </mat-form-field>
   </div>
   <div class="col-6">
     <mat-form-field appearance="outline">
       <mat-label>Status</mat-label>
-      <mat-select>
-        <mat-option [value]="'A'">
-          Available
+      <mat-select formControlName="status">
+        <mat-option>
+          None
         </mat-option>
-        <mat-option [value]="'R'">
-          Reserved
-        </mat-option>
-        <mat-option [value]="'O'">
-          Out of stock
-        </mat-option>
+        <mat-option *ngFor="let item of getRecipeStatus()" [value]="item.key">{{item.value}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
   <div class="col-12">
-    <button mat-raised-button type="submit" class="btn btn-danger">ค้นหา</button>
+    <button mat-raised-button type="submit" class="btn btn-danger">Search</button>
   </div>
 </form>

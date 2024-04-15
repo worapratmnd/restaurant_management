@@ -14,11 +14,15 @@ const searchRecipe = async (criteria: RecipeRequest) => {
         if (criteria.status) {
             where.status = criteria.status;
         }
-
         if (criteria.name) {
             where.name = {
                 [Op.like]: `%${criteria.name}%`,
             };
+        }
+        if (criteria.amount) {
+            where.amount = {
+                [Op.eq]: criteria.amount,
+            }
         }
 
 

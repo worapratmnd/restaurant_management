@@ -11,6 +11,8 @@ export class RecipeComponent implements OnInit {
   isEdit = false;
 
   selectedItem: IRecipe;
+  searchDataItem: IRecipe;
+  recipeList: IRecipe[];
 
   constructor(
     private recipeService: RecipeService,
@@ -18,10 +20,18 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.isEdit = false;
+    this.getAllRecipe();
   }
 
-  getAllRecipe() {
-    return this.recipeService.getAllRecipe();
+  getAllRecipe(searchData?: IRecipe) {
+    if (searchData != undefined) {
+      this.searchDataItem = searchData;
+    }
+    return this.recipeService.getAllRecipe(this.searchDataItem).subscribe(response => {
+      if (response.code == 200) {
+        this.recipeList = response.data;
+      }
+    });
   }
 
   onSelectedItem(item: IRecipe) {
@@ -31,14 +41,28 @@ export class RecipeComponent implements OnInit {
 
   onSubmit(item: IRecipe) {
     if (this.isEdit) {
-      this.recipeService.editRecipe(item);
+      this.editRecipe(item);
     } else {
-      this.recipeService.addRecipe(item);
+      this.addRecipe(item);
     }
   }
 
+  addRecipe(item: IRecipe) {
+    this.recipeService.addRecipe(item).subscribe(response => {
+      this.getAllRecipe();
+    });
+  }
+
+  editRecipe(item: IRecipe) {
+    this.recipeService.editRecipe(item).subscribe(response => {
+      this.getAllRecipe();
+    });
+  }
+
   onRemove(item: IRecipe) {
-    this.recipeService.removeRecipe(item);
+    this.recipeService.removeRecipe(item).subscribe(response => {
+      this.getAllRecipe();
+    });;
   }
 
   onClickAdd() {

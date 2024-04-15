@@ -1,42 +1,32 @@
 import { Injectable } from "@angular/core";
 import { IRecipe } from '../interface/recipe.interface';
+import { HttpClient } from "@angular/common/http";
+import { QueryResponse } from "../interface/query-response.interface";
+import { environment } from "environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-  recipeList: IRecipe[] = [
-    {
-      id: 1,
-      name: "ข้าวผัดไก่",
-      amount: 70,
-      status: "A",
-    },
-  ];
-  recipeId: number = 1;
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  constructor() { }
-
-  getRecipeId() {
-    return ++this.recipeId;
-  }
-  getAllRecipe() {
-    return this.recipeList;
+  getAllRecipe(data?: IRecipe) {
+    return this.http.post<QueryResponse<IRecipe[]>>(`${environment.apiUrl}/recipe/search`, data);
   }
 
   addRecipe(recipe: IRecipe) {
-    recipe.id = this.getRecipeId();
-    this.recipeList.push(recipe);
+    return this.http.post(`${environment.apiUrl}/recipe`, recipe);
   }
 
   editRecipe(recipe: IRecipe) {
-    const item = this.recipeList.find((item) => item.id == recipe.id);
-    item.name = recipe.name;
-    item.status = recipe.status;
+    return this.http.put(`${environment.apiUrl}/recipe/${recipe.id}`, recipe);
+
   }
 
   removeRecipe(recipe: IRecipe) {
-    this.recipeList = this.recipeList.filter((item) => item.id != recipe.id);
+    return this.http.delete(`${environment.apiUrl}/recipe/${recipe.id}`);
   }
 }
 
