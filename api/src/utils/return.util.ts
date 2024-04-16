@@ -5,6 +5,11 @@ export function responseSuccess(res: Response, message: string | null = 'Success
     return res.status(statusCode).json({ code: statusCode, message: message ?? 'Success', data: data });
 }
 
+export function responseCreatedSuccess(res: Response, message: string | null = 'Success', data: any = null) {
+    const statusCode: number = 201;
+    return res.status(statusCode).json({ code: statusCode, message: message ?? 'Success', data: data });
+}
+
 export function responsePaggingSuccess(res: Response, message: string | null, data: any = null, total: number, page: number, limit: number) {
     const statusCode: number = 200;
     return res.status(statusCode).json({

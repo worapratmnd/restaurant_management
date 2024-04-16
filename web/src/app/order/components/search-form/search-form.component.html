@@ -1,15 +1,25 @@
-<form class="row">
+<form [formGroup]="formGroup" (ngSubmit)="onClickSearch()" class="row">
   <div class="col-6">
-    <mat-form-field class="example-full-width" appearance="outline">
-      <input matInput placeholder="Username">
+    <mat-form-field appearance="outline">
+      <mat-label>Select an table</mat-label>
+      <mat-select formControlName="tableId">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let table of listTable" [value]="table.id">{{table.name}}</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div class="col-6">
     <mat-form-field class="example-full-width" appearance="outline">
-      <input matInput placeholder="Username2">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option>
+          None
+        </mat-option>
+        <mat-option *ngFor="let item of getOrderStatus()" [value]="item.key">{{item.value}}</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div class="col-12">
-    <button mat-raised-button type="submit" class="btn btn-danger">ค้นหา</button>
+    <button mat-raised-button type="submit" class="btn btn-danger">Search</button>
   </div>
 </form>

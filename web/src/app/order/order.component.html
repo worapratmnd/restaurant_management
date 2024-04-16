@@ -9,7 +9,7 @@
           </div>
           <div class="card-body">
             <div class="col-12">
-              <order-search-form></order-search-form>
+              <order-search-form (onSearch)="onSearch($event)"></order-search-form>
             </div>
           </div>
         </div>
@@ -21,9 +21,10 @@
         </div>
         <div class="card-body">
           <div class="col-12">
-            <button mat-raised-button type="submit" class="btn btn-danger" (click)="onClickCreateOrder()">สร้าง
-              Order</button>
-            <order-order-list></order-order-list>
+            <button mat-raised-button type="submit" class="btn btn-danger" (click)="onClickCreateOrder()">
+              Create Order
+            </button>
+            <order-order-list [orderList]="orderList" (onItemClick)="onClickEdit($event)"></order-order-list>
           </div>
         </div>
       </div>

@@ -58,6 +58,6 @@ export class TableFormComponent implements OnInit {
 
   onClickRemove() {
     this.onRemove.emit(this.data);
-
+    this.formGroup.reset();
   }
 }

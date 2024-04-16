@@ -12,6 +12,7 @@ import { OrderComponent } from 'app/order/order.component';
 import { CreateOrderComponent } from 'app/order/pages/create-order/create-order.component';
 import { ManageTableComponent } from 'app/manage-table/manage-table.component';
 import { RecipeComponent } from 'app/recipe/recipe.component';
+import { UpdateOrderComponent } from 'app/order/pages/update-order/update-order.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -67,6 +68,10 @@ export const AdminLayoutRoutes: Routes = [
                 path: 'create',
                 component: CreateOrderComponent,
             },
+            {
+                path: 'edit/:id',
+                component: UpdateOrderComponent,
+            }
         ]
     },
     {

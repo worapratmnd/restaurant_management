@@ -8,20 +8,21 @@
               <thead class="">
                 <th>ID</th>
                 <th>Table</th>
-                <th>Amount</th>
+                <th class="text-right">Amount</th>
+                <th class="text-right">Order count</th>
                 <th>Status</th>
                 <th></th>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>โต๊ะริมหน้าต่าง</td>
-                  <td>ข้าวแกงกะหรี่ไก่</td>
-                  <td>70</td>
-                  <td>Available</td>
+                <tr *ngFor="let item of orderList">
+                  <td>{{item.id}}</td>
+                  <td>{{item.Table.name}}</td>
+                  <td class="text-right">{{item.totalAmount}}</td>
+                  <td class="text-right">{{item.OrderItems?.length}}</td>
+                  <td>{{getOrderStatus(item.status)}}</td>
                   <td>
                     <button mat-raised-button type="button" matTooltip="Edit Order" [matTooltipPosition]="'above'"
-                      class="btn btn-primary btn-link btn-sm btn-just-icon">
+                      class="btn btn-primary btn-link btn-sm btn-just-icon" (click)="onClickItem(item.id)">
                       <i class="material-icons">edit</i>
                     </button>
                   </td>

@@ -4,7 +4,7 @@ import projectService from '../service/project.service';
 import To from '../utils/to.util';
 import type { CreateProjectRequest, ProjectRequest } from '../model/project.request';
 import logger from '../middleware/logger';
-import { responseDataNotFound, responsePaggingSuccess, responseSuccess } from '../utils/return.util';
+import { responseCreatedSuccess, responseDataNotFound, responsePaggingSuccess, responseSuccess } from '../utils/return.util';
 
 
 export const findAll = async (
@@ -69,10 +69,7 @@ export const createProject = async (
   if (error) {
     return res.status(500).json({ message: error.message });
   }
-  res.status(201).json({
-    message: 'success',
-    data: result
-  });
+  return responseCreatedSuccess(res, null, result);
 };
 
 

@@ -7,6 +7,7 @@ import To from "../utils/to.util";
 import purchaseOrderService from "../service/purchaseOrder.service";
 import type { Response } from "express";
 import {
+  responseCreatedSuccess,
   responseDataNotFound,
   responsePaggingSuccess,
   responseServerException,
@@ -68,10 +69,7 @@ export const createPurchaseOrder = async (
   if (error) {
     return responseServerException(res, error.message, null);
   }
-  res.status(201).json({
-    message: "success",
-    data: result,
-  });
+  return responseCreatedSuccess(res, null, result);
 };
 
 export const reportPurchaseOrder = async (

@@ -1,16 +1,73 @@
-<form class="row">
+<form class="row" [formGroup]="formGroup">
   <div class="col-6">
-    <mat-form-field class="example-full-width" appearance="outline">
-      <input matInput placeholder="Username">
+    <mat-form-field appearance="outline">
+      <mat-label>Select an table</mat-label>
+      <mat-select formControlName="tableId">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let table of listTable" [value]="table.id">{{table.name}}</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div class="col-6">
     <mat-form-field class="example-full-width" appearance="outline">
-      <input matInput placeholder="Username2">
+      <mat-label>Total Amount</mat-label>
+      <input matInput type="number" placeholder="Total amount" formControlName="totalAmount">
+    </mat-form-field>
+  </div>
+  <div class="col-6">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option>
+          None
+        </mat-option>
+        <mat-option *ngFor="let item of getOrderStatus()" [value]="item.key">{{item.value}}</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
   <div class="col-12">
-    <button mat-raised-button type="submit" class="btn btn-primary" (click)="onBack()">ย้อนกลับ</button>
-    <button mat-raised-button type="submit" class="btn btn-danger">บันทึก</button>
+    <button mat-raised-button type="submit" class="btn btn-danger" (click)="onAddOrderItem()">Add new recipe</button>
+    <hr />
   </div>
+  <ng-container formArrayName="orderItem" *ngFor="let item of orderItem.controls; let i = index;">
+    <div class="col-12 row p-0" [formGroupName]="i">
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Recipe</mat-label>
+          <mat-select formControlName="recipeId">
+            <mat-option (click)="onSelectedItem(i)">
+              None
+            </mat-option>
+            <mat-option *ngFor="let recipe of listRecipe" [value]="recipe.id"
+              (click)="onSelectedItem(i, recipe)">{{recipe.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Quantity</mat-label>
+          <input matInput type="number" placeholder="Quantity" formControlName="quantity">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Amount</mat-label>
+          <input matInput type="number" placeholder="Amount" formControlName="amount">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Total Amount</mat-label>
+          <input matInput type="number" placeholder="Total Amount" formControlName="totalAmount">
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <button mat-raised-button type="button" matTooltip="Remove item" [matTooltipPosition]="'above'"
+          (click)="onClickRemoveItem(i)" class="btn btn-danger btn-link btn-sm btn-just-icon">
+          <i class="material-icons">delete</i>
+        </button>
+        <hr />
+      </div>
+    </div>
+  </ng-container>
 </form>

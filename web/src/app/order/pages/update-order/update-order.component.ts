@@ -1,25 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { quantity } from 'chartist';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { OrderService } from 'app/shared/services/order.service';
+import { IOrder, IOrderItem } from 'app/shared/interface/order.interface';
 
 @Component({
-  selector: 'app-create-order',
-  templateUrl: './create-order.component.html',
-  styleUrls: ['./create-order.component.scss']
+  selector: 'app-update-order',
+  templateUrl: './update-order.component.html',
+  styleUrls: ['./update-order.component.scss']
 })
-export class CreateOrderComponent implements OnInit {
-
+export class UpdateOrderComponent implements OnInit {
+  id: number;
   formGroup: FormGroup;
+
+  orderData: IOrder;
+
   constructor(
-    private location: Location,
+    private activeRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private location: Location,
     private orderService: OrderService,
   ) { }
 
   ngOnInit() {
+    this.id = this.activeRoute.snapshot.params.id;
     this.createForm();
+    this.onLoadData();
   }
 
   createForm() {
@@ -29,10 +36,30 @@ export class CreateOrderComponent implements OnInit {
       status: [null, Validators.required],
       orderItem: new FormArray([]),
     });
-    this.addOrderItem();
   }
 
-  addOrderItem(orderItem?: any) {
+  onLoadData() {
+    this.orderService.getOrderById(this.id).subscribe(response => {
+      if (response.code === 200) {
+        this.orderData = response.data;
+        this.onPatchFormData();
+      }
+    });
+  }
+
+  onPatchFormData() {
+    this.formGroup.patchValue({
+      tableId: this.orderData.tableId,
+      totalAmount: this.orderData.totalAmount,
+      status: this.orderData.status,
+    });
+
+    this.orderData.OrderItems.forEach(item => {
+      this.addOrderItem(item);
+    });
+  }
+
+  addOrderItem(orderItem?: IOrderItem) {
     const orderItemForm = this.formBuilder.group({
       recipeId: [orderItem?.recipeId ?? null, Validators.required],
       orderId: [orderItem?.orderId ?? null],
@@ -58,8 +85,9 @@ export class CreateOrderComponent implements OnInit {
   onSubmit() {
     const orderBody = this.formGroup.getRawValue();
     if (this.formGroup.valid) {
-      this.orderService.createOrder(orderBody).subscribe((response) => {
-        if (response.code === 201) {
+      orderBody.id = this.id;
+      this.orderService.updateOrder(orderBody).subscribe((response) => {
+        if (response.code === 200) {
           this.onBack();
         }
       })

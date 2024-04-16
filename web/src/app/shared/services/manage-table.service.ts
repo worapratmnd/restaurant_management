@@ -12,7 +12,7 @@ export class ManageTableService {
   constructor(private http: HttpClient) { }
 
 
-  getAllTable(body: IManageTable) {
+  getAllTable(body?: IManageTable) {
     return this.http.post<QueryResponse<IManageTable[]>>(`${environment.apiUrl}/table/search`, body);
   }
 

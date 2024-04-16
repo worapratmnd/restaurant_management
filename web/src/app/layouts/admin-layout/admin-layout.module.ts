@@ -32,6 +32,7 @@ import { RecipeFormComponent } from 'app/recipe/components/recipe-form/recipe-fo
 import { RecipeSearchFormComponent } from 'app/recipe/components/recipe-search-form/recipe-search-form.component';
 import { RecipeListComponent } from 'app/recipe/components/recipe-list/recipe-list.component';
 import { OrderFormComponent } from 'app/order/components/order-form/order-form.component';
+import { UpdateOrderComponent } from 'app/order/pages/update-order/update-order.component';
 
 @NgModule({
   imports: [
@@ -70,6 +71,7 @@ import { OrderFormComponent } from 'app/order/components/order-form/order-form.c
     RecipeSearchFormComponent,
     RecipeListComponent,
     OrderFormComponent,
+    UpdateOrderComponent,
   ]
 })
 
