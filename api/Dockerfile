@@ -16,10 +16,6 @@ RUN apk add --no-cache \
     nodejs \
     yarn
 
-# Set environment variables for Puppeteer
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
