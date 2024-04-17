@@ -4,7 +4,7 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import compressFilter from "./utils/compressFilter.util";
 import apiV1 from "./routes/v1";
-import authRoute from "./routes/auth.route";
+import authRoute, { verifyToken } from "./routes/auth.route";
 import { errorHandler } from "./middleware/errorHandler";
 import config from "./config/config";
 // import authLimiter from './middleware/authLimiter';
@@ -51,6 +51,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/auth", authRoute);
+app.use("/api/v1", verifyToken);
 app.use("/api/v1", apiV1);
 // app.use(errorHandler);
 

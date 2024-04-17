@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './shared/auth/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -17,7 +19,12 @@ const routes: Routes = [
     children: [{
       path: '',
       loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-    }]
+    }],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   }
 ];
 
@@ -31,7 +38,6 @@ const routes: Routes = [
   ],
   exports: [
   ],
-
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
   ]

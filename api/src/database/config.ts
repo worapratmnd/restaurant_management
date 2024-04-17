@@ -4,6 +4,7 @@ import { initTable } from "./model/table.db";
 import { initRecipe } from "./model/recipe.db";
 import { initOrderItem } from "./model/orderItem.db";
 import { initOrder } from "./model/order.db";
+import { initUser } from "./model/user.db";
 
 const sequelize = new Sequelize(
   config.database.DB,
@@ -31,6 +32,7 @@ function initDatabase() {
   initRecipe(sequelize);
   initOrderItem(sequelize);
   initOrder(sequelize);
+  initUser(sequelize);
 }
 
 export { sequelize, initDatabase };

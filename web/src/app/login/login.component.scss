@@ -1,0 +1,56 @@
+// .password {
+//     -webkit-text-security: disc;
+// }
+
+// .auth-height {
+//     overflow: auto;
+// }
+
+// .full-height-vh {
+//     height: 100vh !important;
+//     height: calc(1vh * 100) !important;
+//     height: calc(var(--vh, 1vh) * 100) !important;
+// }
+
+// .auth-page .auth-img {
+//     padding: 0;
+// }
+
+.login-body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    text-align: center;
+}
+// .login-container input[type="text"],
+// .login-container input[type="password"] {
+//     width: calc(100% - 20px);
+//     padding: 10px;
+//     margin: 10px 0;
+//     border: 1px solid #ccc;
+//     border-radius: 3px;
+// }
+// .login-container button {
+//     width: 100%;
+//     padding: 10px;
+//     background-color: #007bff;
+//     color: #fff;
+//     border: none;
+//     border-radius: 3px;
+//     cursor: pointer;
+// }
+// .login-container button:hover {
+//     background-color: #0056b3;
+// }
