@@ -100,11 +100,3 @@ INSERT INTO table_management (name,status,created_at,created_by,updated_at,updat
 INSERT INTO rma.users (username,name,password,created_at,created_by,updated_at,updated_by) VALUES
 	 ('admin','Admin','$2b$10$aSVjDEiBzILS57C0tduqRuxEJUugbTE7rkxeZmtJlsa0rRmLA/d2m','2024-04-17 16:35:20','system','2024-04-17 16:35:20','system');
 
-
-INSERT INTO rma.`order` (table_id,total_amount,status,created_at,created_by,updated_at,updated_by) VALUES
-	 (1,235,'O','2024-04-17 16:48:00','admin','2024-04-17 16:48:00','admin');
-
-
-INSERT INTO rma.order_item (recipe_id,order_id,quantity,amount,total_amount,created_at,created_by,updated_at,updated_by) VALUES
-	 (1,1,2,85,170,'2024-04-17 16:48:00',NULL,'2024-04-17 16:48:00',NULL),
-	 (2,1,1,65,65,'2024-04-17 16:48:00',NULL,'2024-04-17 16:48:00',NULL);
