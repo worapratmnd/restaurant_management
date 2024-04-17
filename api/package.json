@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -25,17 +26,18 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.7.0",
     "nodemon": "^3.0.2",
-    "puppeteer": "^21.7.0",
     "sequelize": "^6.35.2",
     "utility-types": "^3.10.0",
     "winston": "^3.11.0",
     "xss": "^1.0.14"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/compression": "^1.7.5",
     "@types/cookie-parser": "^1.4.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   }

@@ -1,9 +1,9 @@
-import { Sequelize } from 'sequelize';
-import config from '../config/config';
-import { initTable } from './model/table.db';
-import { initRecipe } from './model/recipe.db';
-import { initOrderItem } from './model/orderItem.db';
-import { initOrder } from './model/order.db';
+import { Sequelize } from "sequelize";
+import config from "../config/config";
+import { initTable } from "./model/table.db";
+import { initRecipe } from "./model/recipe.db";
+import { initOrderItem } from "./model/orderItem.db";
+import { initOrder } from "./model/order.db";
 
 const sequelize = new Sequelize(
   config.database.DB,
@@ -11,7 +11,7 @@ const sequelize = new Sequelize(
   config.database.PASSWORD,
   {
     host: config.database.HOST,
-    dialect: 'mysql',
+    dialect: "mysql",
     define: {
       timestamps: true,
       freezeTableName: true,
@@ -21,8 +21,8 @@ const sequelize = new Sequelize(
       max: config.database.pool.max,
       min: config.database.pool.min,
       acquire: config.database.pool.acquire,
-      idle: config.database.pool.idle
-    }
+      idle: config.database.pool.idle,
+    },
   }
 );
 
@@ -32,7 +32,5 @@ function initDatabase() {
   initOrderItem(sequelize);
   initOrder(sequelize);
 }
-
-
 
 export { sequelize, initDatabase };
