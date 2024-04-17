@@ -1,4 +1,4 @@
-import { PaginateRequest } from "./paginate.request";
+import { AuthUserRequest, PaginateRequest } from "./paginate.request";
 
 export interface RecipeRequest extends PaginateRequest {
     id?: number;
@@ -7,7 +7,7 @@ export interface RecipeRequest extends PaginateRequest {
     status?: string;
 }
 
-export interface CreateRecipeRequest {
+export interface CreateRecipeRequest extends AuthUserRequest {
     name?: string;
     amount?: number;
     status?: string;

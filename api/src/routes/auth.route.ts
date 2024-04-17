@@ -9,7 +9,6 @@ const router = Router();
 router.post("/login", authController.login);
 
 export const verifyToken = (req: any, res: Response, next: NextFunction) => {
-    logger.debug("verifyToken...");
     const bearerToken: string = req.headers['authorization'];
 
     if (!bearerToken) {
@@ -27,7 +26,13 @@ export const verifyToken = (req: any, res: Response, next: NextFunction) => {
             return res.status(401).json({ message: 'Failed to authenticate token' });
         }
         // Attach the decoded user information to the request object for later use
-        req.user = decoded;
+        const username = decoded?.username ?? '';
+        req.user = username;
+        req.body = {
+            ...req.body,
+            createdBy: username,
+            updatedBy: username,
+        }
         next();
     });
 };

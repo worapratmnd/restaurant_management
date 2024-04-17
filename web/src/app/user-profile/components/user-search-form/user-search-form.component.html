@@ -1,0 +1,21 @@
+<form [formGroup]="formGroup" (ngSubmit)="onClickSearch()">
+  <div class="row">
+    <div class="col-6">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" />
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" formControlName="username" />
+      </mat-form-field>
+    </div>
+    <div class="col-12 mt-2">
+      <button mat-raised-button type="submit" class="btn btn-danger">
+        Search
+      </button>
+    </div>
+  </div>
+</form>

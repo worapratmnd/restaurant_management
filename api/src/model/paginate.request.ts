@@ -4,3 +4,9 @@ export interface PaginateRequest {
   sort: string;
   order: string;
 }
+
+export interface AuthUserRequest {
+  user: string;
+  createdBy: string;
+  updatedBy: string;
+}

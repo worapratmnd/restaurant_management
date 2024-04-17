@@ -1,4 +1,4 @@
-import { PaginateRequest } from "./paginate.request";
+import { AuthUserRequest, PaginateRequest } from "./paginate.request";
 
 
 export interface OrderRequest extends PaginateRequest {
@@ -8,14 +8,14 @@ export interface OrderRequest extends PaginateRequest {
     status?: string | undefined;
 }
 
-export interface CreateOrderRequest {
+export interface CreateOrderRequest extends AuthUserRequest {
     id?: number | undefined;
     tableId?: number | undefined;
     totalAmount?: number | undefined;
     orderItem: CreateOrderItemRequest[],
 }
 
-export interface CreateOrderItemRequest {
+export interface CreateOrderItemRequest extends AuthUserRequest {
     recipeId?: number | undefined;
     orderId?: number | undefined;
     quantity?: number | undefined;

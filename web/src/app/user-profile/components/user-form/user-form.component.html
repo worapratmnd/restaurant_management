@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header card-header-danger">
+    <h4 class="card-title">Add new User</h4>
+    <p class="card-category">เพิ่ม User ใหม่</p>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="formGroup" (ngSubmit)="onClickSubmit()" class="row">
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" />
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="username" />
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Password" formControlName="password" />
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <button *ngIf="data?.id != null" mat-raised-button type="button" matTooltip="Remove Table"
+          [matTooltipPosition]="'above'" class="btn btn-accent btn-link btn-sm btn-just-icon" (click)="onClickRemove()">
+          <i class="material-icons">delete</i>
+        </button>
+        <button mat-raised-button type="submit" class="btn btn-danger pull-right">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
