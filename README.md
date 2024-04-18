@@ -63,3 +63,9 @@ Run ng serve for a dev server Navigate to **[http://localhost:4200](http://local
 ```shell
     ng serve
 ```
+
+## Login Account
+
+| Username | Password |
+| -------- | -------- |
+| admin    | 111111   |
